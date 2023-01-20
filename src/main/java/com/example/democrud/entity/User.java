@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -25,8 +26,8 @@ public class User {
 
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<User> todoList;
+    @OneToMany( cascade = CascadeType.ALL)
+    private List<Todo> todoList;
 
 
 }
