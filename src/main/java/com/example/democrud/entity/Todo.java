@@ -17,12 +17,6 @@ public class Todo {
 
     private String description;
 
-    @Column(name = "username")
-    private String username;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private User userTodo;
-
 
 
 }
