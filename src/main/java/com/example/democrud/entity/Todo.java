@@ -17,6 +17,10 @@ public class Todo {
 
     private String description;
 
+   @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "user_id", referencedColumnName = "idUser")
+   private User userId;
+
 
 
 }
