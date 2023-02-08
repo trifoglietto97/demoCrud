@@ -5,6 +5,7 @@ import com.example.democrud.repository.UserRepository;
 import com.example.democrud.service.UserService;
 import jakarta.jws.soap.SOAPBinding;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +40,11 @@ public class UserController {
     @DeleteMapping(value = "/deleteById/{id}")
     private void deleteById(@PathVariable Long id){
          userService.deleteById(id);
+    }
+
+    @RequestMapping(value = "/paginAndSort/{pageNumber}/{pageSize}", method = RequestMethod.GET)
+    public Page<User> usserPagination(@PathVariable Integer pageNumber, @PathVariable Integer pageSize){
+        return userService.getUserPagination(pageNumber, pageSize);
     }
 
 

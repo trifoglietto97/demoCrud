@@ -6,6 +6,10 @@ import jakarta.transaction.Transactional;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.engine.jndi.spi.JndiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -41,4 +45,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public Page<User> getUserPagination(Integer pageNumber, Integer pageSize) {
+        Sort sort = Sort.by(Sort.Direction.ASC, "userName");
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return userRepository.findAll(pageable);
+    }
 }
